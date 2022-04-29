@@ -7,11 +7,12 @@ import postRoutes from "./routes/posts.js"
 
 const app = express();
 
+app.use(cors());
 app.use("/posts", postRoutes);
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors());
+
 
 const MONGODB_URI = process.env.URI;
 const PORT = process.env.PORT;
