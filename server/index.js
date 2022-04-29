@@ -1,32 +1,23 @@
+import {connectDB} from "./db.js"
+import {PORT} from "./config.js"
+
+
 import express from "express";
-import bodyParser from "body-parser";
-import mongoose from "mongoose";
+import postsRoutes from "./routes/posts.routes.js";
 import cors from "cors";
-import "dotenv/config";
-import postRoutes from "./routes/posts.js"
 
-const app = express();
 
+const app = express()
+
+//middlewares
+app.use(express.json())
+
+
+//rutas
 app.use(cors());
-app.use("/posts", postRoutes);
-
-app.use(bodyParser.json({ limit: "30mb", extended: true }));
-app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+app.use(postsRoutes);
+connectDB();
 
 
-const MONGODB_URI = process.env.URI;
-const PORT = process.env.PORT;
-
-mongoose
-  .connect(MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() =>
-    app.listen(PORT, () => {
-      console.log(`server running on port: ${PORT}`);
-    })
-  )
-  .catch((error) => {
-    console.log(error);
-  });
+app.listen(PORT)
+console.log("server iniciado en puerto", PORT);

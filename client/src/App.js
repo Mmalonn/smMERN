@@ -16,6 +16,9 @@ const App = () => {
     dispatch(getPosts());
   }, [dispatch]);
 
+
+
+
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
