@@ -18,13 +18,13 @@ const Auth = () => {
 
 
   const handleShowPassword = () => {
-    setShowPassword((prevShowPassword) => prevShowPassword);
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const handleSubmit = () => {};
 
   const handleChange = () => {};
-
+ 
   const switchMode = () => {
     setIsSignup((prevIsSignup)=>!prevIsSignup);
     handleShowPassword(false);
