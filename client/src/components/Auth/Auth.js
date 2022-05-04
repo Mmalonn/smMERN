@@ -7,6 +7,7 @@ import {
   Typography,
   Container,
 } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 import LockOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import useStyles from "./styles";
 import Input from "./Input";
@@ -19,6 +20,7 @@ const Auth = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleShowPassword = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -38,6 +40,7 @@ const Auth = () => {
     const token = res?.tokenId;
     try {
       dispatch({ type: "AUTH", data: { result, token } });
+      history.push("/");
     } catch (err) {
       console.log(err);
     }
