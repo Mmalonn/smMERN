@@ -44,7 +44,7 @@ const Auth = () => {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e) =>{
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
