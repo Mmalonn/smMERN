@@ -1,5 +1,5 @@
 import { FETCH_ALL, CREATE, UPDATE, DELETE } from "../constants/actionTypes";
-import * as api from "../api";
+import * as api from "../api/index.js";
 
 // Actions creators
 
@@ -48,3 +48,4 @@ export const likePost = (id) => async (dispatch) => {
     console.log(err);
   }
 };
+
