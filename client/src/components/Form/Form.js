@@ -26,7 +26,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (currentId === 0) {
+    if (post == null) {
       dispatch(createPost({ ...postData, name: user?.result?.name }));
       clear();
     } else {
@@ -47,14 +47,14 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
 
-  if(!user?.result?.name){
-    return(
+  if (!user?.result?.name) {
+    return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
           Please Sign In to create your own memories and like other's memories.
         </Typography>
       </Paper>
-    )
+    );
   }
 
   return (
